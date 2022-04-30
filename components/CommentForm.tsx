@@ -18,7 +18,7 @@ export default function CommentForm(props: CommentFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-2xml my-10 mx-auto mb-10 flex flex-col p-5"
+      className="max-w-2xl my-10 mx-auto mb-10 flex flex-col p-5"
     >
       <h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
       <h4 className="text-3xl font-bold">Leave a comment below!</h4>
