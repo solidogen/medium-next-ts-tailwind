@@ -23,11 +23,7 @@ export default function PostPage(props: PostPageProps) {
 
   const [submitted, setSubmitted] = useState(false)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInput>()
+  const useFormReturn = useForm<IFormInput>()
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     fetch('/api/createComment', {
@@ -117,9 +113,7 @@ export default function PostPage(props: PostPageProps) {
             <CommentForm
               post={post}
               onSubmit={onSubmit}
-              errors={errors}
-              handleSubmit={handleSubmit}
-              register={register}
+              useFormReturn={useFormReturn}
             />
           )
         }

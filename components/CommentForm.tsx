@@ -1,21 +1,19 @@
-import { FieldErrors, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from "react-hook-form"
+import { FieldErrors, SubmitHandler, UseFormHandleSubmit, UseFormRegister, UseFormReturn } from "react-hook-form"
 import { Post } from '../model/typings'
 import { IFormInput } from "../pages/post/[slug]"
 
 interface CommentFormProps {
   post: Post
   onSubmit: SubmitHandler<IFormInput>
-  errors: FieldErrors
-  handleSubmit: UseFormHandleSubmit<IFormInput>
-  register: UseFormRegister<IFormInput>
+  useFormReturn: UseFormReturn<IFormInput, any>
 }
 
 export default function CommentForm(props: CommentFormProps) {
   let post = props.post
   let onSubmit = props.onSubmit
-  let errors = props.errors
-  let handleSubmit = props.handleSubmit
-  let register = props.register
+  let errors = props.useFormReturn.formState.errors
+  let handleSubmit = props.useFormReturn.handleSubmit
+  let register = props.useFormReturn.register
 
   return (
     <form
