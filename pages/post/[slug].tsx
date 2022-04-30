@@ -159,7 +159,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
         slug {
           current
         },
-        body
+        body,
+        'comments': *[
+          _type == "comment" &&
+          post._ref == ^._id &&
+          approved == true
+        ]
       }`
 
   const post = await sanityClient.fetch(query, {
