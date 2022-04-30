@@ -26,7 +26,7 @@ function Post(props: Props) {
           {post.description}
         </h2>
 
-        <div className="flex items-center space-x-2 border border-red-500">
+        <div className="flex items-center space-x-2">
           <img
             className="h-10 w-10 rounded-full"
             src={urlFor(post.author.image).url()!}
@@ -63,6 +63,39 @@ function Post(props: Props) {
           ></PortableText>
         </div>
       </article>
+
+      <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
+
+      <form className="max-w-2xml my-10 mx-auto mb-10 flex flex-col p-5">
+        <h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
+        <h4 className="text-3xl font-bold">Leave a comment below!</h4>
+        <hr className="mt-2 py-3" />
+
+        <label className="mb-5 block">
+          <span className="text-gray-700">Name</span>
+          <input
+            className="form-input mt-1 block w-full rounded border py-2 px-3 shadow ring-yellow-500 outline-none focus:ring"
+            placeholder="John Appleseed"
+            type="text"
+          />
+        </label>
+        <label className="mb-5 block">
+          <span className="text-gray-700">E-mail</span>
+          <input
+            className="form-input mt-1 block w-full rounded border py-2 px-3 shadow ring-yellow-500 outline-none focus:ring"
+            placeholder="John Appleseed"
+            type="text"
+          />
+        </label>
+        <label className="mb-5 block">
+          <span className="text-gray-700">Comment</span>
+          <textarea
+            className="form-text-area mt-1 block w-full rounded border py-2 px-3 shadow ring-yellow-500 outline-none focus:ring"
+            placeholder="John Appleseed"
+            rows={8}
+          />
+        </label>
+      </form>
     </main>
   )
 }
