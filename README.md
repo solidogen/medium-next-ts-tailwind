@@ -33,6 +33,7 @@ Inside, paste following:
 ```
 NEXT_PUBLIC_SANITY_DATASET=your_database_name, e.g. production
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_cms_project_id
+SANITY_API_TOKEN=this_needs_to_be_generated_on_sanity_io_site
 ```
 
 Run by `sanity start` inside cms directory

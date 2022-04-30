@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import PortableText from 'react-portable-text'
 import Header from '../../components/Header'
-import { sanityClient, urlFor } from '../../lib/sanity'
+import { sanityClient, sanityConfig, urlFor } from '../../lib/sanity'
 import { Post } from '../../model/typings'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
@@ -25,8 +25,13 @@ function Post(props: Props) {
     formState: { errors },
   } = useForm<IFormInput>()
 
-  const onSubmit: SubmitHandler<IFormInput> = async(data) => {
-      console.log(data)
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    fetch('/api/createComment', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((result) => console.log(`Submit status: ${result.status}`))
+      .catch((error) => console.error(error))
   }
 
   return (
@@ -60,8 +65,8 @@ function Post(props: Props) {
 
         <div className="mt-10">
           <PortableText
-            dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
-            projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
+            dataset={sanityConfig.dataset}
+            projectId={sanityConfig.projectId}
             content={post.body}
             serializers={{
               h1: (props: any) => (
@@ -85,7 +90,10 @@ function Post(props: Props) {
 
       <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-2xml my-10 mx-auto mb-10 flex flex-col p-5">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="max-w-2xml my-10 mx-auto mb-10 flex flex-col p-5"
+      >
         <h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
         <h4 className="text-3xl font-bold">Leave a comment below!</h4>
         <hr className="mt-2 py-3" />
