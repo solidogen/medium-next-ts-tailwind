@@ -25,4 +25,14 @@ Run by `npm run dev`
 
 ### Sanity CMS
 
+We need to specify what our sanity project id and database flavor are, in similar fashion to Netlify.
+
+In project root we need `.env.local` file (already ignored by git).
+
+Inside, paste following:
+```
+NEXT_PUBLIC_SANITY_DATASET=your_database_name, e.g. production
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_cms_project_id
+```
+
 Run by `sanity start` inside cms directory
