@@ -5,11 +5,11 @@ import TopBanner from '../components/TopBanner'
 import { sanityClient, urlFor } from '../lib/sanity'
 import { Post } from '../model/typings'
 
-interface HomeProps {
+interface HomePageProps {
   posts: [Post]
 }
 
-export default function Home(props: HomeProps) {
+export default function HomePage(props: HomePageProps) {
   const posts = props.posts
   console.log(posts)
   return (
