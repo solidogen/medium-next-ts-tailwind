@@ -70,8 +70,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   return {
-      props: {
-          post
-      }
+    props: {
+      post,
+    },
+    // enables ISR - after user loads the page, next loads will be from cache,
+    // after this time next user will wait for a fresh page
+    revalidate: 60
   }
 }
