@@ -9,7 +9,7 @@ interface HomePageProps {
   posts: [Post]
 }
 
-export default function HomePage(props: HomePageProps) {
+const HomePage = (props: HomePageProps) => {
   const posts = props.posts
   console.log(posts)
   return (
@@ -54,6 +54,8 @@ export default function HomePage(props: HomePageProps) {
     </div>
   )
 }
+
+export default HomePage
 
 export const getServerSideProps = async () => {
   const postsQuery = `*[_type == "post"]{

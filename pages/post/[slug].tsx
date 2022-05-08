@@ -18,7 +18,7 @@ interface PostPageProps {
   post: Post
 }
 
-export default function PostPage(props: PostPageProps) {
+const PostPage = (props: PostPageProps) => {
   let post = props.post
 
   const [submitted, setSubmitted] = useState(false)
@@ -135,6 +135,8 @@ export default function PostPage(props: PostPageProps) {
     </main>
   )
 }
+
+export default PostPage
 
 export const getStaticPaths = async () => {
   const query = `*[_type == "post"]{
